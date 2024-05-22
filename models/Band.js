@@ -1,8 +1,18 @@
-const { Sequelize, db } = require('../db/connection');
+const { Sequelize, DataTypes } = require('sequelize');
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    logging: false,  // Disable logging if it becomes too verbose
+});
 
-let Band = db.define('band', {
-    name: Sequelize.STRING,
-    genre: Sequelize.STRING
+const Band = sequelize.define('Band', {
+    name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    genre: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
 });
 
 module.exports = Band;
