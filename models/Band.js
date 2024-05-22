@@ -1,10 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-    dialect: 'postgres',
-    logging: false,  // Disable logging if it becomes too verbose
-});
+const { Sequelize, db } = require('../db/connection');
+const { DataTypes } = require('sequelize');
 
-const Band = sequelize.define('Band', {
+const Band = db.define('Band', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,

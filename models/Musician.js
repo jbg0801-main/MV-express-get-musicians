@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = new Sequelize(process.env.DATABASE_URL);
+const { Sequelize, db } = require('../db/connection');
+const { DataTypes } = require('sequelize');
 
-const Musician = sequelize.define('Musician', {
+const Musician = db.define('Musician', {
     name: {
         type: DataTypes.STRING,
         allowNull: false,
